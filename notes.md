@@ -36,10 +36,20 @@
 
 ---
 
-## Day 3 - Brute-forcing
+## Day 3 - Brute-forcing (Hydra)
 
 * This task covers the basics of password strength in terms of complexity and length such as how many possible passwords exist at varying levels of complexity and length as well as how long they would take to crack with current technology.
 
 * The idea behind this task is that the systems have been compromised and in order to restore the systems from backups we need to access the IT rooms but those door pins have been changed so we bruteforce them by making a list of 3 digit pins (That's the possible length of the pin input and we use the characters on the pin pad for the possible characters) and running hydra with that list against the webpage post form.
+
+---
+
+## Day 4 - Brute-forcing (CeWL)
+
+* `CeWL` is a custom wordlist generator that works by spidering (aka crawling or scraping which is basically targeted crawling) websites and creating wordlists based on what it collects. This allows for creation of highly specialized wordlists for things like brute-forcing credentials(emails/usernames/passwords/etc.) or directories.
+
+* `wfuzz` is a web fuzzing and brute-forcing tool. Fuzzing is the process of injecting malformed/invalid/unexpected inputs into a system. This is usually done to find faults in the system's function or security. Fuzzing tools automate this process.
+
+* For the task we used CeWL on the website's home page with a depth of 5 to generate a password list and used CeWL with a depth of 0 on the team's page to generate the username list. Then we used wfuzz with these lists to brute-force the login and get the flag!
 
 ---
