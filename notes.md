@@ -53,3 +53,17 @@
 * For the task we used CeWL on the website's home page with a depth of 5 to generate a password list and used CeWL with a depth of 0 on the team's page to generate the username list. Then we used wfuzz with these lists to brute-force the login and get the flag!
 
 ---
+
+## Day 5 - Reverse Engineering (DOS)
+
+* The story behind today's challenge is that following some of the previous brute-forcing we've done to get into our own IT rooms again, we found the backups we needed but the tool for reading them wasn't working. There is a version that works, but it runs on DOS. There is an old PC in the room that we use to solve the challenge.
+
+* `DOS` stands for Disk Operating System. As the name suggests, DOS is an OS that runs from a disc in the disc drive. DOS follows a single-user and single-task design which has basic, non-reentrant kernel functions which meant only one program can use them at a time. MS-DOS by Microsoft is a popular example of this type of OS and was the foundation for later versions of Microsoft Windows.
+
+    * DOS is very similar to the command prompt on windows as Cmd is essentially an instance of DOS. Many of the commands are the same such as dir, cd, cls, type, and help. edit calls up the text editor. DOS also used batch (.bat) files for scripting. As is still the case in operating systems today, pressing alt will allow you to access the menu/tool bar. For instance, alt+f will open the file menu. So for example in MS-DOS, to exit the editor you would press alt+f and then x.
+
+* This challenge also touched on what file-signatures/magic-bytes are.
+
+* The troubleshooting file specifices the backup file signature needed for the backup software. We change the file signature to the specified bytes and run the backup software on the backup file which spits out the flag!
+
+---
