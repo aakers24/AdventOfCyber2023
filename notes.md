@@ -60,7 +60,7 @@
 
 * `DOS` stands for Disk Operating System. As the name suggests, DOS is an OS that runs from a disc in the disc drive. DOS follows a single-user and single-task design which has basic, non-reentrant kernel functions which meant only one program can use them at a time. MS-DOS by Microsoft is a popular example of this type of OS and was the foundation for later versions of Microsoft Windows.
 
-    * DOS is very similar to the command prompt on windows as Cmd is essentially an instance of DOS. Many of the commands are the same such as dir, cd, cls, type, and help. edit calls up the text editor. DOS also used batch (.bat) files for scripting. As is still the case in operating systems today, pressing alt will allow you to access the menu/tool bar. For instance, alt+f will open the file menu. So for example in MS-DOS, to exit the editor you would press alt+f and then x.
+    * DOS is very similar to the command prompt on windows as Cmd is essentially an instance of DOS. Many of the commands are the same such as dir, cd, cls, type, exit, and help. edit calls up the text editor. DOS also used batch (.bat) files for scripting. As is still the case in operating systems today, pressing alt will allow you to access the menu/tool bar. For instance, alt+f will open the file menu. So for example in MS-DOS, to exit the editor you would press alt+f and then x.
 
 * This challenge also touched on what file-signatures/magic-bytes are.
 
