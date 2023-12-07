@@ -67,3 +67,9 @@
 * The troubleshooting file specifices the backup file signature needed for the backup software. We change the file signature to the specified bytes and run the backup software on the backup file which spits out the flag!
 
 ---
+
+## Day 6 - Memory Corruption
+
+* The concept behind this challenge is memory corruption vulnerabilities and attacks. These vulnerabilities usually occur because inputs are not handled properly and inputs that are larger than the program expects will fill their allotted space in volatile memory and then begin taking space outside of this allotment. This memory "overflow" can result in corruption of the space in memory it takes. However, if someone savvy can diagnose this vulnerability they can craft a payload and use this overflow to insert it into memory. This is known as a buffer overflow attack.
+
+---
