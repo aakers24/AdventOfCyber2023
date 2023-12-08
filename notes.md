@@ -73,3 +73,31 @@
 * The concept behind this challenge is memory corruption vulnerabilities and attacks. These vulnerabilities usually occur because inputs are not handled properly and inputs that are larger than the program expects will fill their allotted space in volatile memory and then begin taking space outside of this allotment. This memory "overflow" can result in corruption of the space in memory it takes. However, if someone savvy can diagnose this vulnerability they can craft a payload and use this overflow to insert it into memory. This is known as a buffer overflow attack.
 
 ---
+
+## Day 7 - Log Analysis (Proxies)
+
+* A disgruntled elf has downloaded a Cyptominer and data-stealer malware from the dark web and installed it on all of the workstations and servers. Once it began executing, large volumes of unusual network traffic were generated and much of it is going outside of the internal company network.
+
+* The task explains what a proxy server is(I go in much more depth below) and explains how using a proxy for network traffic can be beneficial, especially when it logs all of the traffic going through it. It can also whitelist/blacklist traffic based on any given parameter(such as destination, protocol, etc.).
+
+    * A proxy server acts as a gateway. It is usually used between a device and the internet. Some of the main benefits of this include the possibility of anonymity for a user and visibility of traffic for the owner(or someone with access).
+
+        * The proxy listens for client connections and when one is made it opens an additional, new connection to the specified destination. It will read the data coming from the client and destination and forward that data to the other connection. In terms of operating on this data (filtering, logging, etc.) that should be pretty straight forward to understand(e.g. "if x condition is met, do not send", saving the data in a log file, encrypting/decrypting, etc.).
+
+        * Some types of proxies include -
+
+            * HTTP/HTTPS proxies - These only support HTTP/HTTPS web traffic
+            
+            * SOCKS - This is more general as the protocol supports any traffic, but the application must support SOCKS proxies
+
+            * Reverse Proxy - Basically the same as a normal proxy, but functions on incoming connections to the network. Think firewalls and load balancers. Regular forward proxies are focused on clients, reverse proxies are focused on servers.
+
+            * VPN - While there are many differences and this isn't exactly the real purpose of a VPN, a VPN is often used sort of like a proxy where all traffic between the user and the proxy is encrypted. In this use, one of the major differences is that the VPN works at a system level so application support is not necessary.
+
+                * A VPN is really what it stands for-- a Virtual Private Network. It works by tunnelling the entire IP packet(which contains the entire network stack except the physical layer, if you can recall from the OSI model). This is accomplished by removing the physical layer and then putting/wrapping that entire IP packet(often encrypted) into the VPN protocol which essentially makes it the data/payload in a new network stack. This "VPN Packet" is sent to the VPN server where it is unwrapped and is now on that network. As a side note, this is also tunnelling. As part of their protocol(I believe), VPNs will change the ip address in the wrapped/inner IP packet similar to how a router's NAT protocol would; this is why destinations don't see your real IP even though it would normally be part of the original packet. VPNs use a network feature called TUN/TAP which is a virtual/emulated network card/interface. Network interfaces have their own information like IP addresses and these virtual interfaces are like network cards for programs-- VPNs in this case.
+
+* Back to the task... basic Linux command line tools for viewing text files is covered as well as pipes. Using these tools on the proxy log, we can answer questions about the malicious activity!
+
+    * One very useful option in the `cut` tool I hadn't used before was the `-f` flag. This designates the cuts as fields so `cut -d ' ' -f <n>` returns all of the results in the nth field/column. `cut -d ' ' -f 2 <log> | sort | uniq | nl` gives the number of lines of unique values in the 2nd field/column. Also, putting these together back to back can allow some really fine-tuned data analysis. For instance, `cut -d ' ' -f 3 <log> | cut -d ':' -f 1 | sort | uniq | nl` a certain type of data without the ":\<port\>".
+
+---
