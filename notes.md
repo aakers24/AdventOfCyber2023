@@ -101,3 +101,11 @@
     * One very useful option in the `cut` tool I hadn't used before was the `-f` flag. This designates the cuts as fields so `cut -d ' ' -f <n>` returns all of the results in the nth field/column. `cut -d ' ' -f 2 <log> | sort | uniq | nl` gives the number of lines of unique values in the 2nd field/column. Also, putting these together back to back can allow some really fine-tuned data analysis. For instance, `cut -d ' ' -f 3 <log> | cut -d ':' -f 1 | sort | uniq | nl` a certain type of data without the ":\<port\>".
 
 ---
+
+## Day 8 - Disk Forensics
+
+* In today's case, one of McGreedy's partners in crime has dropped malicious USBs in the parking lot. They got plugged in and installed malware on the network. Digital forensics is being done on the flash drive using FTK Imager.
+
+    * In reality, a digital forensics expert would plug the USB into a write-blocker and then plug that into a machine for analysis, but in the task the VM is mounting the flash drive in read-only mode to emulate this scenario.
+
+---
