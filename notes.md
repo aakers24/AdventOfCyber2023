@@ -109,3 +109,21 @@
     * In reality, a digital forensics expert would plug the USB into a write-blocker and then plug that into a machine for analysis, but in the task the VM is mounting the flash drive in read-only mode to emulate this scenario.
 
 ---
+
+## Day 9 - Malware Analysis (.NET)
+
+* Today we're analysing the malware recovered from yesterday's attack. Specifically, we're looking for information about the attacker McGreedy's C2 infrastructure.
+
+* .NET binaries are the compiled output files of .NET source code files. The .NET framework includes C#, F#, Visual Basic, and C++ through C++/CLI (previously managed C++). The binaries can be executables, DLLs, or assemblies which are collections of types and resources that are implemented as EXEs and DLLs. .NET doesn't compile directly to machine code, but rather compiles into a intermediate language that can then be compiled into native machine code during runtime using the Common Language Runtime (CLR) environment.
+
+    * The intermediate language that .NET compiles into contains metadata which enables the file to be converted back into its source code.
+
+* A C2 server is a centralized system/infrastructure that is essentially a proxy (server/domain/etc.) that is used to remotely manage/control/surveil a target.
+
+    * A basic C2 flow overview looks like - Malware execution on target -> malware connects to C2 and listens -> C2 sends instructions to malware -> malware executes instructions -> malware sends the outputs to C2. The attacker sets up the C2 infrastructure and coordinates the malware with it before the attack. Then the attacker connects to the C2 to send instructions, view exfiltrated data, and more.
+
+* `dnSpy` is an open source .NET assembly debugger/editor.
+
+* Using dnSpy on the malware we find a lot of useful information about the attacker's TTPs!
+
+---
