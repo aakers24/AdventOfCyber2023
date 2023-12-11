@@ -127,3 +127,23 @@
 * Using dnSpy on the malware we find a lot of useful information about the attacker's TTPs!
 
 ---
+
+## Day 10 - SQL Injection
+
+* The website has been taken over, defaced, and vulnerabilities are being auctioned off on the dark web. We have to hack back into it to save the day and Christmas!
+
+* Stacked Queries are SQL Injection (SQLi) attacks where queries are able to be terminated and other queries can be appended allowing for multiple queries in a single SQLi. This is done by terminating a query with ';' and then appending the next query.
+
+* When we fill out the search function and submit it, we see variables being passed in the URL which we can deduce are being sent to an SQL query behind the scenes because these are search terms and they must be searching something to get results.
+
+    * We insert 's and "s into the variable values to check for SQLi vulnerabilities. When inserting a ' into one of the variables we get a database error, confirming that the variables are being passed into a query and that the input isn't handled properly meaning there is a vulnerability. To make matters worse, the error message is also unsanitized and given directly to the user which gives attackers/us more information.
+
+    * 1=1 SQLi attacks work by giving an always-true result and commenting out the rest of query. So `' <AND/OR> 1=1 --` basically ends the previous part of the query, says always true, and then comments out the rest.
+
+    * Store procedures which are basically commands built into the DBMS can be called via stacked queries. If you can get a stacked query to run, it is possible to execute a stored procedure and possibly get RCE or other high-severity exploits through it.
+
+* We know the DBMS is Microsoft SQL which has a procedure called xp_cmdshell. If not configured to disable this command, it can be a vulnerability. If you're getting your queries run as a privileged user, you can also run queries that re-enable this command.
+
+* To get RCE and save the day, we make a revShell payload and boot up a little `python -m http.server 8080`. We then use the `EXEC xp-cmdshell <command>` and pass in a certutil command that downloads the payload from our little server. Then we run a netcat listener and use the xp_cmdshell again to run the payload on the target.
+
+---
