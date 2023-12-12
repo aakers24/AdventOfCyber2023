@@ -147,3 +147,29 @@
 * To get RCE and save the day, we make a revShell payload and boot up a little `python -m http.server 8080`. We then use the `EXEC xp-cmdshell <command>` and pass in a certutil command that downloads the payload from our little server. Then we run a netcat listener and use the xp_cmdshell again to run the payload on the target.
 
 ---
+
+## Day 11 - Active Directory (Permissions)
+
+* The Principle of Least Privilege (PoLP) is a concept in Information Security which dictates that an entity is only entitled to the minimum level of information/permission/access/privileges/authorization/etc. to function or complete it's job.
+
+* Active Directy, more specificially Windows Hello which uses public-key-crypto with PINs or biometrics, uses the Trusted Platform Module(TPM) to take care of the crypto, and then the organization's Certificate Authority to validate and issue a certificate, and finally the msDS-KeyCredentialLink for that user is set.
+
+    * The authorization process includes the Domain Controller decrypting the client's pre-auth data using the public key in the user's msDS-KeyCredentialLink, then it generates and sends a certificate to the client.
+
+    * From this process, we can see that an attacker with control of a user's msDS-KeyCredentialLink can compromise that user!
+
+* `powershell -ep bypass` is a powershell command that will bypass the powershell execution policy.
+
+* `PowerSploit` is a collection of powershell modules for pentesting/ethical hacking.
+
+* `Whisker` is a tool written in C# for breaking into AD accounts by appending alternate credentials to their msDS-KeyCredentialLink, creating "Shadow Credentials" which are basically hidden credentials.
+
+    * Using `Whisker add /taret:<account name>` will do it's work and then spit out a command for use with `Rubeus`, which is a C# toolset for interaction and abuse of Kerberos.
+
+* `Kerberos` is an SSO (Single Sign On) network authentication protocol. It establishes an authenticated session between the client and server. It uses a ticketing paradigm.
+
+    * The Kerberos system is comprised of clients/users, resources, and a key distribution center which contains an authentication server and a ticket-granting server.
+
+    * The client sends its request and login username with the request encrypted by the hash of the password to the auth server. The auth server verifies it, uses the stored password hash to decrypt the request, and returns a Ticket-Granting-Ticket (TGT) which is encrypted with a different key than request/password. The client then sends the request and the TGT to the Ticket-Granting-Server (TGS). The TGS decrypts the ticket and sends the client a token encrypted with yet another key. The client sends the token to the resource(server) who then verifies the token with the TGS. (Based on a little more research it seems the details of the initial client-auth data may be a little off, but maybe not. Either way it seems to be basically following a standard public-key encryption sort of paradigm.)
+
+---
