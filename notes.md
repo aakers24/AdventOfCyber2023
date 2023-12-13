@@ -191,3 +191,41 @@
         * Strengthen Password Policies.
 
 ---
+
+## Day 13 - Intrusion Detection
+
+* A `Firewall` is a security device(software and/or hardware) that monitors ingoing and outgoing traffic on a network and uses rules to determine if it should be allowed or blocked.
+
+    * Types of firewalls include -
+
+        * Stateless/packet-filtering - Inspects packets on the network and filters them based on source/destination IP, port, and/or protocol.
+
+        * Stateful - Makes filtering decisions based on current network connections.
+
+        * Proxy - Analyzes packets at the application layer, giving deeper and fine-tuned control.
+
+        * Next-generation - Combines the functionalities of the previously mentioned types, and adds an IDS/IPS as well as more filtering possibilities. 
+
+        * Web Application Firewall (WAF) - Designed to protect web apps, this blocks common attacks against web apps, such as SQLi, XSS, and DoS.
+
+* The default firewall on Ubuntu is uncomplicated firewall (ufw) which is a stateful firewall.
+
+    * The syntax follows the standard for firewall and similar technologies. E.g. `ufw allow 22/tcp`, `ufw default deny incoming`, etc.
+
+* A `Honeypot` is a security mechanism to deter attacks on information systems and gain information about the attackers. It is generally a trap set with data that seems legitimate, in a natural place, and desirable to attackers, but is actually not valuable and is in a secured, monitored place which is intended for analysis of and/or countermeasures against the attack/attackers.
+
+    * Two common classifications of honeypot include - 
+
+        * Low Interaction - These imitate simple systems(websites, apps, databases) with the intention of learning about attackers, their behavior, and new TTPs.
+
+        * High Interaction - These imitate complex systems(operating systems, networks) with the intention of getting more detailed and extensive information about the same things.
+
+    * You could roll your own honeypot, but there are also many available for deployment already. Some including - 
+
+        * PenTBox (Used in the task)
+
+        * OpenCanary
+
+        * T-Pot (tpotce)
+
+---
