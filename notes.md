@@ -173,3 +173,21 @@
     * The client sends its request and login username with the request encrypted by the hash of the password to the auth server. The auth server verifies it, uses the stored password hash to decrypt the request, and returns a Ticket-Granting-Ticket (TGT) which is encrypted with a different key than request/password. The client then sends the request and the TGT to the Ticket-Granting-Server (TGS). The TGS decrypts the ticket and sends the client a token encrypted with yet another key. The client sends the token to the resource(server) who then verifies the token with the TGS. (Based on a little more research it seems the details of the initial client-auth data may be a little off, but maybe not. Either way it seems to be basically following a standard public-key encryption sort of paradigm.)
 
 ---
+
+## Day 12 - Defense in Depth
+
+* Defense in Depth (DiD) - Defense in Depth is a concept in security which describes the use of multiple layers of security controls/defenses in a system. The goal is to harden the system and to promote redundancy so as to avoid a single point of failure and to deter bad actors from reaching their goal. The idea of layers of defense also promotes the end goal of thwarting bad actors rather than never having anything fail or never having any compromise take place.
+
+* Some of these layers include -
+
+    * Defenses based on the PoLP. In computer systems this can mean users only being in groups that they absolutely need to be in and users/groups only having permissions that are necessary.
+
+    * Zero Trust Principle - Never trust, always verify.
+
+    * In a computer system some include -
+
+        * Harden SSH - Disable password-based logins, check keys.
+
+        * Strengthen Password Policies.
+
+---
