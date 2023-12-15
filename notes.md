@@ -235,3 +235,23 @@
 * For me this was just a review of ML and I didn't feel there was anything I needed to take notes on. However, I will say I thought they did a good job!
 
 ---
+
+## Day 15 - Machine Learning (Spam/Phishing Detection)
+
+* Like the previous day, this was largely a review of concepts including Jupyter Notebooks and Machine Learning. I still thought there were some notes worth taking though!
+
+* A typical Machine Learning pipeline(build and deployment) includes - 
+
+    * Ingesting data - Gathering raw data from various sources
+
+    * Cleaning the data - Making sure the data set is set up properly including removal of errors in the data, removal of corrupt data, etc.
+
+    * Preprocessing - Normalizing, Standardizing, Feature Extraction(Conversion of other forms of data into numbers basically), Discretization, Tokenization, Imputation, and more.
+
+    * Modeling - Design/creation of model and training.
+
+    * Deployment
+
+* `ham` is a word for non-spam emails!?!?!?!!!!
+
+---
