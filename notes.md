@@ -229,3 +229,9 @@
         * T-Pot (tpotce)
 
 ---
+
+## Day 14 - Machine Learning
+
+* For me this was just a review of ML and I didn't feel there was anything I needed to take notes on. However, I will say I thought they did a good job!
+
+---
