@@ -255,3 +255,15 @@
 * `ham` is a word for non-spam emails!?!?!?!!!!
 
 ---
+
+## Day 16 - Machine Learning (Captcha Bypass)
+
+* Again, much of the ML content is review for me, but some notes are still worth taking if not just to further knock things into my head!
+
+* Using a Convolutional Neural Network is going to allow us to perform feature extraction using the ML which will allow the solving of captchas to be done more efficiently using ML.
+
+* The training data is gathered by `curl`ing the webpage with the captcha which gives the base64 encoded image. Then doing this many times and converting them into their image files we can build up the dataset.
+
+* Once trained, we have to host the model so that the brute forcing script can send it captchas to solve.
+
+---
