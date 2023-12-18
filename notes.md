@@ -267,3 +267,29 @@
 * Once trained, we have to host the model so that the brute forcing script can send it captchas to solve.
 
 ---
+
+## Day 17 - Traffic Analysis
+
+* Network Flow(Protocol Flow Records / Network Flow Records) is a PCAP(Full Packet Capture) alternative that disregards the entire packet and only looks at part of it in order to get lighter-weight, summarized information.
+
+    * Network Flows disregard the application layer payload. Because it looks only at the other layers, it's looking at information like the src/dst IP, port, protocols, TCP info, metrics(size/etc.), and application layer protocol info.
+
+* Network Flows can generally be captured the same way as PCAPs. You can also convert PCAPs to Network Flows.
+
+* The SiLK Suite is one of the tools for Network Flows.
+
+* The Internet Assigned Numbers Authority (IANA) is the organization responsible for basically numbers on the internet. This includes IP allocation, Autonomous System Number (ASN) allocation, and more including Assigned Internet Protocol Numbers which assigns identification numbers to internet protocols.
+
+    * Some of the common protocols include - 
+
+        * IPv4 - 4
+
+        * TCP - 6
+
+        * UDP - 17
+
+        * RDP - 27
+
+        * IPv6 - 41
+
+---
