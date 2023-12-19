@@ -293,3 +293,25 @@
         * IPv6 - 41
 
 ---
+
+## Day 18 - Eradication
+
+* There's a server on the company network using abnormally high resources that was found as part of the insider threat investigation. Suspecting it might be cryptomining, the blue team found a single process on the server that was not approved.
+
+* Normally, before eradication we would want to collect any samples/dumps and do any other forensic work we need to.
+
+* The linux commands and tools used to identify and eradicate the unauthorized process "a" include -
+
+    * `top`
+
+    * `kill`
+
+    * `crontab -l` / `sudo crontab -l`
+
+    * `systemctl list-unit-files | grep enabled`, `systemctl status <service>`, `systemctl stop <service>`, `systemctl disable <service>`
+
+    * `rm -rf /etc/systemd/system/<service>`, `rm -rf /etc/systemd/system/<program>`
+
+    * `systemctl daemon-reload`
+
+---
