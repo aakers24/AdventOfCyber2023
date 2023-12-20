@@ -315,3 +315,9 @@
     * `systemctl daemon-reload`
 
 ---
+
+## Day 19 - Memory Forensics
+
+* When the suspicious network traffic was found and the system was identified from yesterday's task, a memory dump and a Volatility linux profile were taken from the machine. This happened first thing and before the other events of yesterday's task. Today we reviewed the concepts of volatile memory, memory forensics, memory dumps, and used `Volatility` to analyze the system's memory and find more clues and information on the insider threat!
+
+---
