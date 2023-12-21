@@ -321,3 +321,15 @@
 * When the suspicious network traffic was found and the system was identified from yesterday's task, a memory dump and a Volatility linux profile were taken from the machine. This happened first thing and before the other events of yesterday's task. Today we reviewed the concepts of volatile memory, memory forensics, memory dumps, and used `Volatility` to analyze the system's memory and find more clues and information on the insider threat!
 
 ---
+
+## Day 20 - DevSecOps (Purple Team)
+
+* DevOps is a union of software development (Dev) methodologies with IT deployment and operations (Ops) methodologies with the goal of improving the effectiveness and efficiency of the Software/System Development Life Cycle (SDLC).
+
+    * DevSecOps is DevOps with the addition of security methodologies.
+
+    * CI/CD stands for Continuous Integration and Continuous Delivery/Deployment and is a common practice in DevOps. It is the automation of building, testing, and deployment. Usually defined in some sort of configuration file(or this is abstracted and done for you based on your inputs into a front-end, like GitHub Actions for example), CI/CD pipelines are chains of jobs which are the most fundamental building block-- an operation like running a command or script.
+
+* Poisoned Pipeline Execution (PPE) is a type of attack in which one or more parts of the CI/CD pipeline is compromised. This typically involves abusing the trust mechanisms built into the tools/process as a means of easier automation. Often malicious code is sent to the pipeline and built/deployed because the system inherently trusts the compromised account or system.
+
+---
