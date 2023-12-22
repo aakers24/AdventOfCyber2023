@@ -333,3 +333,11 @@
 * Poisoned Pipeline Execution (PPE) is a type of attack in which one or more parts of the CI/CD pipeline is compromised. This typically involves abusing the trust mechanisms built into the tools/process as a means of easier automation. Often malicious code is sent to the pipeline and built/deployed because the system inherently trusts the compromised account or system.
 
 ---
+
+## Day 21 - DevSecOps (Red Team)
+
+* Where a direct Poisoned Pipeline Execution attack would abuse direct access(e.g. write privileges) to some part of the pipeline, an indirect Poisoned Pipeline Execution (iPPE) attack abuses access to some other system that the pipeline uses or relies on(e.g. source code repository, or dependency repository/application).
+
+* In the task, the pipeline itself cannot be modified, but the source code repository can be which allows for the exploitation of a iPPE vulnerability. We added some commands to the makefile in the source respository and then viewed their output after Jenkins built it!
+
+---
