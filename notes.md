@@ -341,3 +341,23 @@
 * In the task, the pipeline itself cannot be modified, but the source code repository can be which allows for the exploitation of a iPPE vulnerability. We added some commands to the makefile in the source respository and then viewed their output after Jenkins built it!
 
 ---
+
+## Day 22 - Server Side Request Forgery (SSRF)
+
+* Cross Site Request Forgery (CSRF) is an attack vector in which an attacker gets the target to execute a web request. The idea is that the target user has authenticated and recieved a session token already so when they execute your request by clicking your link or malicious form, the attack is performed. There is no need for the attacker to have credentials first.
+
+    * For example, a website uses `www.bank.com/transfer?amount=<$amount>?receive=<transfer destination account>` to send money, a hacker could pick an amount and their account number to be inserted into that request. Then if they get the target user to click on it, the transfer is done because they're already authenticated. This click could be a plain hyperlink or an html form with a button that executes this link. In many CSRF attacks the user is unaware of what happened.
+
+    * To prevent CSRF attacks, the most common method is to use CSRF tokens (anti-forgery tokens, synchronizer token pattern, request verification tokens) which are secret, secure, unique-per-session tokens that are added to the form and encrypted browser cookie. This means that even if the cookie is stolen, it fails because it must match the token in the form. The attacker would have to include the secure CSRF token in his malicious form, which would be next to impossible.
+
+* Server Side Request Forgery (SSRF) is an attack vector in which the attacker abuses the trustworthiness of the server they're interacting with. They craft their request to access a resource it shouldn't-- whether internal or external. This can result in unauthorized access or actions including remote code execution.
+
+    * For example, a form on the website gets an image from `images/<image>`. You could edit the request to be `../../etc/passwd`(probably need some more ..'s, but you get the idea). Another case could be a url submission where instead of `totally.legit.website/<image>` you put in `malicious.notlegit.website/<payload>` or `file:///etc/passwd`.
+
+    * Mitigation for SSRF includes following PoLP, whitelisting accessable resources, disallowing redirects, input sanitization/validation, and output sanitization.
+
+* Blind SSRF refers to the case in which the attacker cannot directly see the response to the request, but infers information based on response times and error messages. There is also Semi-Blind SSRF in which the responses are still unseen, but there is more information to be analyzed and draw conclusions from.
+
+* In today's task, we're going to be attacking the malicious C2 server using an SSRF vulnerability.
+
+---
