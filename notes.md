@@ -361,3 +361,20 @@
 * In today's task, we're going to be attacking the malicious C2 server using an SSRF vulnerability.
 
 ---
+
+## Day 23 - Coerced Authentication
+
+* The attack vector explored in this task is Coerced Authentication. This is when an adversary can get access to the challenge/responses in the NetNTLM handshake and intercept or relay them.
+
+* `Responder` is an open-source tool used for performing MitM NetNTLM poisoning on LAN. It works by responding to LLMNR, NBT-NS, and WPAD that are normally dropped by the recipients that aren't the true client. By doing this it impersonates the client and gives access to the challenge/responses.
+
+* The more remote-friendly alternative to this listening Responder technique is the coercion attack vector. This is when we coerce the system to initiate authentication to us instead of waiting to listen for someone else's authentication. This way we can try to crack the password hash, or try to relay it. You can coerce both a user system or a server, but as a rule of thumb a user will be more likely to have a crackable password while the server will more likely have their authentication relayed. To coerce a system to authenticate with us, we need to target a service and coerce its authentication to us.
+    
+    * Some well known coercion vulnerabilities were found in PrintSpooler and PetitPotam.
+
+    * Another method of coercion is to create a file that will automatically coerce authentication to us when opened in the file browser. There are many filetypes that can be used for this, but the main concept is that an element of the file is requested to load from a remote location.
+
+* In the task, we use `ntlm_theft` to create a .lnk file that will automatically coerce authentication when opened in the file browser. Then, since we need it somewhere the target will interact with it to get it to run, we will put it in a network share on the target machine. We then start Responder on the attacker machine.
+    * We then cracked the password hash using a list found on the target machine and used these credentials to log onto the target machine and exfiltrate the flag!
+
+---
