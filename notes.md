@@ -378,3 +378,35 @@
     * We then cracked the password hash using a list found on the target machine and used these credentials to log onto the target machine and exfiltrate the flag!
 
 ---
+
+## Day 24 - Mobile Analysis
+
+* The beginning of the task is a review of some digital forensics procedures.
+
+* One topic covered is acquisition of forensic images and includes -
+
+    * Static Acquisition - Bit-for-bit copy image of disk taken from a device that is powered off.
+
+        * After removing the storage drive from the device, plug it in to a write-blocker(which gets plugged into the analyst's machine) and then use a forensic imaging tool to make an image and save it to another storage drive.
+
+    * Live Acquisition - Bit-for-bit copy image of disk taken from a device that is powered on.
+
+        * Without turning off the device's power, run a program that will make a forensic image-- including volatile memory dumps-- and save it to another storage drive.
+
+    * Logical Acquisition - Particular files is copied.
+
+    * Sparse Acquisition - Unallocated data fragments are copied. This technique is targetting deleted data and usually used alongside other methods.
+
+* Full-Disk Encryption means that all data stored on the device/drive is encrypted. New data is encrypted before being saved, and decrypted when accessed.
+
+* Smartphones are full-disk encrypted by default and require the key/password to boot. However, this typically doesn't apply to removable media by default. These protections mean that the password/key is usually required for decryption.
+
+* In digital forensics, the use of Faraday Bags/Cages is important for wireless devices. This is because it removes the ability for remote access which prevents things like remotely wiping or corrupting the device as a means of counterintelligence.
+
+* In the task, the suspect reused a password on his phone that we had previously discovered. This resolves a massive obstacle in the process. If you aren't given the password, you would have to rely on wordlist bruteforcing, the absolutely abysmally, impossibly low chance of pure bruteforcing, or being nation-state actor that totally doesn't have a backdoor built in or the ability to get the device provider to give access to a backdoor they totally don't have built in(this may be a little tin-foil conspiracy, but you never know and I wouldn't be suprised-- there's some precedent).
+
+* `Android Debug Bridge (adb)` is a tool that can be used to create a backup image. Because it may not have access to all applications, this isn't a complete and robust solution. It would need to be used with a root exploit or some other tool/vector to get a complete image.
+
+* In the task `Autopsy` is used to analyze the image gained through the aforementioned means.
+
+---
