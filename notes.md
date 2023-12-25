@@ -410,3 +410,11 @@
 * In the task `Autopsy` is used to analyze the image gained through the aforementioned means.
 
 ---
+
+## The End!
+
+* At this point the attacks have been mitigated and evidence has been gathered against a suspect! Now it's time to present the evidence to Santa himself and use cybersecurity knowledge to prove the suspect's guilt.
+
+* After battling his arguments with the evidence, McGreedy admitted to being behind everything!
+
+---
